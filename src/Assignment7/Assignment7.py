@@ -29,17 +29,19 @@ dag_with_interval_based = DAG(
     schedule_interval=timedelta(hours=1),  #scheduling using interval based scheduling
 )
 
-task1 = PythonOperator(
+#task for Cron expression DAG
+task_cron_expression = PythonOperator(
     task_id="python_operator",
     python_callable=even_numbers,
     dag=dag_with_cron
 )
 
-task2 = PythonOperator(
+#task for interval based scheduling DAG
+task_interval_based = PythonOperator(
     task_id="my_python",
     python_callable=even_numbers,
     dag=dag_with_interval
 )
 
-task1
+
 
